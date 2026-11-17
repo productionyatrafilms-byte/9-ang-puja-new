@@ -1,0 +1,114 @@
+@font-face {
+    font-family: "Rubik";
+    src: local("Rubik Medium"), local("Rubik-Medium"),
+        url("../../fonts/Rubik-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "ITF Devanagari";
+    src: url("../../fonts/ITFDevanagari-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "ITF Devanagari";
+    src: url("../../fonts/ITFDevanagari-Bold.otf") format("opentype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Noto Sans Gujarati";
+    src: url("../../fonts/NotoSansGujarati-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Noto Sans Gujarati";
+    src: url("../../fonts/NotoSansGujarati-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --page-bg-color: #f3b9d8;
+    --white: #ffffff;
+    --lang: #5c00d5;
+    --box-shadow: rgba(0, 0, 0, 0.25);
+    --font-copy: "Rubik", "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    background-color: var(--page-bg-color);
+}
+
+/* ---------- Language switch ---------- */
+
+/* ---------- Vertical centring ----------
+   The stage is 56.25vw tall. When the window is taller than that the wrapper
+   centres it; the language switch follows it (50% of body minus half the
+   stage, plus its 2.5vw offset inside the frame). */
+
+.main-container {
+    align-content: center;
+}
+
+#langSelect {
+    top: calc(50% - 25.625vw);
+    right: 1.719vw;
+}
+
+#language {
+    background-color: transparent;
+    border: 0.208vw solid var(--white);
+    border-radius: 12.604vw;
+    padding: 0.156vw 0.208vw;
+    filter: drop-shadow(0 0.208vw 0.104vw var(--box-shadow));
+}
+
+#langSelect label {
+    padding: 0.156vw 0.208vw;
+}
+
+#langSelect label span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.37vw;
+    aspect-ratio: 1;
+    padding: 0;
+    border: 0.208vw solid var(--white);
+    background: var(--lang);
+    font-family: var(--font-copy);
+    font-weight: 500;
+    font-size: 1.563vw;
+    line-height: 1.563vw;
+    color: var(--white);
+}
+
+#langSelect input:checked + span {
+    background: var(--white);
+    color: var(--lang);
+    border-color: var(--lang);
+}
+
+/* Every Hindi text is Devanagari and every Gujarati text is Noto Gujarati,
+   whatever the English font of the element is. The language switch (E H G)
+   is not affected: its letters are plain spans, not .hindi / .gujrati. */
+
+.hindi {
+    font-family: "ITF Devanagari", "Nirmala UI", "Devanagari Sangam MN", serif;
+}
+
+.gujrati {
+    font-family: "Noto Sans Gujarati", "Nirmala UI", sans-serif;
+}
